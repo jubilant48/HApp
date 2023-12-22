@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Resources/Fonts/sf-pro-display/Sf-Pro-Display-Black-Italic.otf</string>
+		<string>Resources/Fonts/sf-pro-display/Sf-Pro-Display-Bold.otf</string>
+		<string>Resources/Fonts/sf-pro-display/Sf-Pro-Display-Heavy-Italic.otf</string>
+		<string>Resources/Fonts/sf-pro-display/Sf-Pro-Display-Light-Italic.otf</string>
+		<string>Resources/Fonts/sf-pro-display/Sf-Pro-Display-Medium.otf</string>
+		<string>Resources/Fonts/sf-pro-display/Sf-Pro-Display-Regular.otf</string>
+		<string>Resources/Fonts/sf-pro-display/Sf-Pro-Display-Semi-Bold-Italic.otf</string>
+		<string>Resources/Fonts/sf-pro-display/Sf-Pro-Display-Thin-Italic.otf</string>
+		<string>Resources/Fonts/sf-pro-display/Sf-Pro-Display-Ultra-Light-Italic.otf</string>
+	</array>
+</dict>
+</plist>

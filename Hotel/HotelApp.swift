@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct HotelApp: App {
+    // MARK: - Attributes
+    
+    @StateObject var appCoordinator = AppCoordinator()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainVController()
+                .environmentObject(appCoordinator)
         }
     }
 }

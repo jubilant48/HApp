@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-Hotel/Pods-Hotel-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AnyFormatKit/AnyFormatKit.framework
+${BUILT_PRODUCTS_DIR}/AnyFormatKitSwiftUI/AnyFormatKitSwiftUI.framework
+${BUILT_PRODUCTS_DIR}/SFSafeSymbols/SFSafeSymbols.framework
+${BUILT_PRODUCTS_DIR}/SwiftUIFlowLayout/SwiftUIFlowLayout.framework
