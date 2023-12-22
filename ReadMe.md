@@ -21,3 +21,7 @@
 <img src="https://img.shields.io/badge/CachedAsyncImage-green" alt="Animated" />
 </a>
 </p>
+
+## About the project
+
+##### Video with project: https://mega.nz/file/9Q1mAZwa#s7uWQSDv_zzmGmvwQkOUReT5V_Zv_R6fSy-0JCbU3SQ
