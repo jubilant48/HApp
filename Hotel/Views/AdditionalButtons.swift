@@ -13,7 +13,7 @@ struct AdditionalButtons: View {
     private let sfProDisplayMedium = FontFamily.SFProDisplay.medium
     private let sfProDisplayRegular = FontFamily.SFProDisplay.regular
     
-    private let sectionBackgroundColor = Asset.Colors.fbfbfc333333.swiftUIColor
+    private let sectionBackgroundColor = Asset.Colors.fbfbfc151515.swiftUIColor
     private let textColor = Asset.Colors._000000Ffffff.swiftUIColor
     private let secondaryTextColor = Asset.Colors._828796.swiftUIColor
     

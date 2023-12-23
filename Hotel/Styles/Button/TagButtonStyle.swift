@@ -23,7 +23,7 @@ struct TagButtonStyle: ButtonStyle {
             .padding(edgeInset)
             .background(
                 Rectangle()
-                    .foregroundColor(backgroundColor)
+                    .foregroundColor(configuration.isPressed ? backgroundColor.opacity(0.4) : backgroundColor)
                     .cornerRadius(cornerRadius)
             )
     }

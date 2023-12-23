@@ -44,6 +44,7 @@
 		FA85CFB82B36409400316D3F /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = FA85CFB72B36409400316D3F /* CachedAsyncImage */; };
 		FA8B88422B3080630044A2E3 /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B88412B3080630044A2E3 /* TagsView.swift */; };
 		FA8B88452B3083240044A2E3 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B88442B3083240044A2E3 /* TagView.swift */; };
+		FA9283A12B374B6100324697 /* LoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9283A02B374B6100324697 /* LoadView.swift */; };
 		FA9E3B6C2B2F27E100413917 /* HotelVControllerVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E3B6B2B2F27E100413917 /* HotelVControllerVModel.swift */; };
 		FA9E3B6E2B2F445B00413917 /* ImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E3B6D2B2F445B00413917 /* ImageSlider.swift */; };
 		FA9E3B732B2F5E0E00413917 /* RaitingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E3B722B2F5E0E00413917 /* RaitingView.swift */; };
@@ -118,6 +119,7 @@
 		FA85CFB42B362D2100316D3F /* CustomSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSection.swift; sourceTree = "<group>"; };
 		FA8B88412B3080630044A2E3 /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
 		FA8B88442B3083240044A2E3 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		FA9283A02B374B6100324697 /* LoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadView.swift; sourceTree = "<group>"; };
 		FA9E3B6B2B2F27E100413917 /* HotelVControllerVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelVControllerVModel.swift; sourceTree = "<group>"; };
 		FA9E3B6D2B2F445B00413917 /* ImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlider.swift; sourceTree = "<group>"; };
 		FA9E3B722B2F5E0E00413917 /* RaitingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaitingView.swift; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 				FAE2CADB2B3205B20075A7A7 /* RoomCell.swift */,
 				FAE4F4E42B33370F0053AFB6 /* FloatingTextField.swift */,
 				FA85CFB42B362D2100316D3F /* CustomSection.swift */,
+				FA9283A02B374B6100324697 /* LoadView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				FA9E3B792B2F6C1400413917 /* HotelTitleView.swift in Sources */,
 				FAE2CAC82B31D5010075A7A7 /* FiveDotsIndexView.swift in Sources */,
 				FA3955922B3602A300663CD1 /* LineOfData.swift in Sources */,
+				FA9283A12B374B6100324697 /* LoadView.swift in Sources */,
 				FA5F87642B34B1D8000B5CBF /* TouristInputView.swift in Sources */,
 				FAE2CADC2B3205B20075A7A7 /* RoomCell.swift in Sources */,
 				FABA31CD2B2E1F4800A74F46 /* CommonError.swift in Sources */,
@@ -895,7 +899,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.planethost.Hotel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -926,7 +930,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.planethost.Hotel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

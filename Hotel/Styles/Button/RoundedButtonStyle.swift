@@ -20,7 +20,7 @@ struct RoundedButtonStyle: ButtonStyle {
             .background(
                 GeometryReader { geometry in
                     Rectangle()
-                        .foregroundColor(backgroundColor)
+                        .foregroundColor(configuration.isPressed ? backgroundColor.opacity(0.6) : backgroundColor)
                         .cornerRadius(15)
                 })
     }

@@ -12,7 +12,7 @@ struct TagView: View {
     
     var tag: String
     
-    let backgroundColor = Color(asset: Asset.Colors.fbfbfc333333)
+    let backgroundColor = Color(asset: Asset.Colors.fbfbfc151515)
     let foregroundColor = Color(asset: Asset.Colors._828796)
     
     private let font = FontFamily.SFProDisplay.regular
