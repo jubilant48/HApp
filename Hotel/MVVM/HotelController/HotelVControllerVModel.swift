@@ -13,10 +13,11 @@ final class HotelVControllerVModel: ObservableObject {
     
     @Published var model: Hotel?
     
-    var title: String = "Отель"
-    var buttonTitle: String = "К выбору номера"
+    let title: String = "Отель"
+    let buttonTitle: String = "К выбору номера"
+    let aboutHotelTitle: String = "Об отеле"
     
-    private var networkService = NetworkService()
+    private let networkService = NetworkService()
     private weak var appCoordinator: AppCoordinator?
     
     // MARK: - Init

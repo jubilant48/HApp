@@ -7,43 +7,65 @@
 
 import SwiftUI
 
-struct OrderAcceptView: View {
-    var circleForegroundColor = Color(asset: Asset.Colors.f6f6f9424242)
-    var title: String
-    var description: String
-    
-    var body: some View {
-        VStack {
-            Text("🎉")
-                .font(.custom("",
-                              size: CGFloat(44)))
-                .frame(width: 94, height: 94)
-                .background(Circle()
-                    .foregroundColor(circleForegroundColor))
-                .padding(.bottom, 32)
+// MARK: - Constant
 
-            
-            Text(title)
-                .font(.custom(FontFamily.SFProDisplay.bold, size: 22))
-                .multilineTextAlignment(.center)
-                .padding(.bottom, 20)
-            
-            Text(description)
-                .font(.custom(FontFamily.SFProDisplay.regular, size: 17))
-                .multilineTextAlignment(.center)
-                .foregroundColor(.gray)
-                .padding(.leading, 35)
-                .padding(.trailing, 35)
-                
-        }
+extension OrderAcceptView {
+    struct Constant {
+        let emojiPadding: CGFloat = 32
+        let titlePadding: CGFloat = 20
+        let descriptionPadding: CGFloat = 35
+        
+        let customFont = ""
+        let customFontSize: CGFloat = 44
+        
+        let fontBold = GeneralConstatnt.fontBold
+        let fontBoldSize: CGFloat = 22
+        
+        let fontRegular = GeneralConstatnt.fontRegular
+        let fontRegularSize: CGFloat = 17
+        
+        let circleForegroundColor = Color(asset: Asset.Colors.f6f6f9424242)
+        
+        let emoji = "🎉"
+        let emojiSize: CGFloat = 94
     }
 }
 
-// MARK: - Preview
+struct OrderAcceptView: View {
+    // MARK: - Attributes
+    
+    var title: String
+    var description: String
+    
+    private let constant = Constant()
+    
+    var body: some View {
+        VStack {
+            Text(constant.emoji)
+                .font(
+                    .custom(constant.customFont, size: constant.customFontSize)
+                )
+                .frame(width: constant.emojiSize, height: constant.emojiSize)
+                .background(Circle()
+                    .foregroundColor(constant.circleForegroundColor))
+                .padding(.bottom, constant.emojiPadding)
 
-struct OrderAcceptView_Previews: PreviewProvider {
-    static var previews: some View {
-        OrderAcceptView(title: "Ваш заказ принят в работу",
-                        description: "Подтверждение заказа №104893 может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление.")
+            
+            Text(title)
+                .font(
+                    .custom(constant.fontBold, size: constant.fontBoldSize)
+                )
+                .multilineTextAlignment(.center)
+                .padding(.bottom, constant.titlePadding)
+            
+            Text(description)
+                .font(
+                    .custom(constant.fontRegular, size: constant.fontRegularSize)
+                )
+                .multilineTextAlignment(.center)
+                .foregroundColor(.gray)
+                .padding([.leading, .trailing], constant.descriptionPadding)
+                
+        }
     }
 }

@@ -8,10 +8,30 @@
 import SwiftUI
 import SFSafeSymbols
 
+// MARK: - Constant
+
+extension HotelVController {
+    struct Constant {
+        let imageSliderHeight: CGFloat = 257
+        
+        let eightPadding: CGFloat = 8
+        let tenPadding: CGFloat = 10
+        let twelfPadding: CGFloat = 12
+        let padding: CGFloat = GeneralConstatnt.padding
+        
+        let fontRegular = GeneralConstatnt.fontRegular
+        let fontRegularSize: CGFloat = 17
+        let fontBold = GeneralConstatnt.fontBold
+        let fontBoldSize: CGFloat = 22
+    }
+}
+
 struct HotelVController: View {
     // MARK: - Attributes
     
     @StateObject var viewModel: HotelVControllerVModel
+    
+    private let constant = Constant()
     
     var body: some View {
         GeometryReader { geometry in
@@ -22,57 +42,53 @@ struct HotelVController: View {
                     CustomSection {
                         VStack {
                             ImageSlider(imageUrls: hotel.imageUrls)
-                                .frame(height: Constant.ImageSliderConstatnt.height)
-                                .padding(.all,
-                                         Constant.GeneralConstatnt.padding)
+                                .frame(height: constant.imageSliderHeight)
+                                .padding(.all, constant.padding)
                             
                             MainInfoHotelView(name: hotel.name,
                                               adress: hotel.adress,
                                               rating: hotel.rating,
                                               ratingName: hotel.ratingName)
-                            .padding([.leading, .trailing], Constant.GeneralConstatnt.padding)
+                            .padding([.leading, .trailing], constant.padding)
                             
                             PriceView(from: hotel.minimalPrice,
                                       forIt: hotel.priceForIt)
-                            .padding(.all,
-                                     Constant.GeneralConstatnt.padding)
+                            .padding(.all, constant.padding)
                         }
                     }
                     
                     CustomSection {
                         VStack {
+                            
                             HStack {
-                                Text("Об отеле")
+                                Text(viewModel.aboutHotelTitle)
                                     .font(
-                                        .custom(FontFamily.SFProDisplay.bold, size: 22)
+                                        .custom(constant.fontBold, size: constant.fontBoldSize)
                                     )
                                 
                                 Spacer()
                             }
-                            .padding([.top, .leading, .trailing],
-                                     Constant.GeneralConstatnt.padding)
+                            .padding([.top, .leading, .trailing], constant.padding)
                             
                             TagsView(hotel.aboutTheHotel.peculiarities)
-                                .padding([.leading, .trailing],
-                                         10)
+                                .padding([.leading, .trailing], constant.tenPadding)
                             
                             Text(hotel.aboutTheHotel.description)
                                 .font(
-                                    .custom(FontFamily.SFProDisplay.regular, size: 17)
+                                    .custom(constant.fontRegular, size: constant.fontRegularSize)
                                 )
-                                .padding([.leading, .trailing],
-                                         Constant.GeneralConstatnt.padding)
-                                .padding(.top, 8)
+                                .padding([.leading, .trailing], constant.padding)
+                                .padding(.top, constant.eightPadding)
                             
                             AdditionalButtons()
+                            
                         }
-                        
                     }
                     .toolbar {
                         ToolbarItem(placement: .bottomBar) {
                             Button(viewModel.buttonTitle) { viewModel.transition() }
                                 .buttonStyle(RoundedButtonStyle())
-                                .padding(.top, 12)
+                                .padding(.top, constant.twelfPadding)
                         }
                     }
                     
@@ -84,15 +100,5 @@ struct HotelVController: View {
             }
             
         }
-    }
-}
-
-// MARK: - Preview
-
-struct HotelVController_Previews: PreviewProvider {
-    static var previews: some View {
-        HotelVController(
-            viewModel: HotelVControllerVModel(appCoordinator: MainVController_Previews.appCoordinator)
-        )
     }
 }

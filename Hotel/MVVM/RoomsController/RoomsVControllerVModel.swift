@@ -14,9 +14,9 @@ final class RoomsVControllerVModel: ObservableObject {
     @Published var model: Rooms?
     
     var title: String
-    var buttonTitle: String = "Выбрать номер"
+    let buttonTitle: String = "Выбрать номер"
     
-    private var networkService = NetworkService()
+    private let networkService = NetworkService()
     private weak var appCoordinator: AppCoordinator?
     
     // MARK:  - Init

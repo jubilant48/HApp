@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+// MARK: - Constant
+
+extension LinesOfDataView {
+    struct Constant {
+        let fontRegular = GeneralConstatnt.fontRegular
+        let textColor = Asset.Colors._000000Ffffff.swiftUIColor
+    }
+}
+
 struct LinesOfDataView<Content: View>: View {
     // MARK: - Attributes
     
@@ -14,8 +23,7 @@ struct LinesOfDataView<Content: View>: View {
     let aligment: Aligment
     var content: Content
     
-    private let font = FontFamily.SFProDisplay.regular
-    private let textColor = Asset.Colors._000000Ffffff.swiftUIColor
+    private let constant = Constant()
     
     var body: some View {
         VStack {
@@ -25,8 +33,8 @@ struct LinesOfDataView<Content: View>: View {
                     LinesOfDataViewMethods().lineOfData(line: line)
                 case .right:
                     LinesOfDataViewMethods().lineOfData(line: line,
-                                                        lastColor: textColor,
-                                                        lastFont: font)
+                                                        lastColor: constant.textColor,
+                                                        lastFont: constant.fontRegular)
                 }
             }
             
@@ -55,53 +63,56 @@ extension LinesOfDataView {
 // MARK: - Methods
 
 struct LinesOfDataViewMethods {
-    private let font = FontFamily.SFProDisplay.regular
-    private let nameTextColor = Asset.Colors._828796.swiftUIColor
+    struct Constant {
+        let fontRegular = GeneralConstatnt.fontRegular
+        let fontRegularSize: CGFloat = 16
+        
+        let nameTextColor = Asset.Colors._828796.swiftUIColor
+        
+        let columnsOne = [GridItem(.fixed(150), spacing: 16, alignment: .topLeading), GridItem(alignment: .topLeading)]
+        let columnsTwo = [GridItem(.fixed(150), spacing: 16, alignment: .topLeading), GridItem(alignment: .trailing)]
+        
+        let lineLimit = 2
+    }
+    
+    private let constant = Constant()
     
     func lineOfData(line: LineOfData) -> some View {
-        LazyVGrid(columns: [GridItem(.fixed(150), spacing: 16, alignment: .topLeading), GridItem(alignment: .topLeading)]) {
+        LazyVGrid(columns: constant.columnsOne) {
             Text(line.name)
-                .font(.custom(font, size: 16))
-                .foregroundColor(nameTextColor)
-                .lineLimit(2)
+                .font(
+                    .custom(constant.fontRegular, size: constant.fontRegularSize)
+                )
+                .foregroundColor(constant.nameTextColor)
+                .lineLimit(constant.lineLimit)
                 .multilineTextAlignment(.leading)
             
             Text(line.data)
-                .font(.custom(font, size: 16))
-                .lineLimit(2)
+                .font(
+                    .custom(constant.fontRegular, size: constant.fontRegularSize)
+                )
+                .lineLimit(constant.lineLimit)
                 .multilineTextAlignment(.leading)
         }
     }
     
     func lineOfData(line: LineOfData, lastColor: Color? = nil, lastFont: FontConvertible) -> some View {
-        LazyVGrid(columns: [GridItem(.fixed(150), spacing: 16, alignment: .topLeading), GridItem(alignment: .trailing)]) {
+        LazyVGrid(columns: constant.columnsTwo) {
             Text(line.name)
-                .font(.custom(font, size: 16))
-                .foregroundColor(nameTextColor)
-                .lineLimit(2)
+                .font(
+                    .custom(constant.fontRegular, size: constant.fontRegularSize)
+                )
+                .foregroundColor(constant.nameTextColor)
+                .lineLimit(constant.lineLimit)
                 .multilineTextAlignment(.leading)
         
             Text(line.data)
-                .font(.custom(lastFont, size: 16))
+                .font(
+                    .custom(lastFont, size: constant.fontRegularSize)
+                )
                 .foregroundColor(lastColor)
-                .lineLimit(2)
+                .lineLimit(constant.lineLimit)
                 .multilineTextAlignment(.trailing)
         }
-    }
-}
-
-// MARK: - Preview
-
-struct LinesOfData_Previews: PreviewProvider {
-    static var previews: some View {
-        LinesOfDataView(lines: [
-            LineOfData(name: "Вылет из", data: "Москва"),
-            LineOfData(name: "Страна, город", data: "Египет, Хургада"),
-            LineOfData(name: "Даты", data: "19.09.2023 - 27.09.2023"),
-            LineOfData(name: "Кол-во ночей", data: "7 ночей"),
-            LineOfData(name: "Отель", data: "Лучший пятизвёздочный отель в Хургаде, Египет"),
-            LineOfData(name: "Номер", data: "Люкс номер с видом на море"),
-            LineOfData(name: "Питание", data: "Все включено")
-        ]) { }
     }
 }

@@ -32,6 +32,12 @@
 
 ## Log - version
 
+#### 1.02
+
+- fix color alertColor in FloatingTextField
+- fix page control bug
+- migrate magical numbers of all views in "Constant" struct of views 
+
 #### 1.01
 
 - add animation for buttons

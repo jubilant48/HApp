@@ -8,6 +8,23 @@
 import SwiftUI
 import SFSafeSymbols
 
+// MARK: - Constant
+
+extension PlusTouristView {
+    struct Constant {
+        let fontBold = GeneralConstatnt.fontBold
+        let fontBoldSize: CGFloat = 22
+        
+        let foregroundColor = Color.white
+        let blueColor = Asset.Colors._0d72ff.swiftUIColor
+        
+        let buttonEdgeInset = EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        let opacity: CGFloat = 0.01
+        
+        let addTouristTitle = "Добавить туриста"
+    }
+}
+
 struct PlusTouristView: View {
     // MARK: - Attributes
     
@@ -15,15 +32,16 @@ struct PlusTouristView: View {
     
     @State var isDesabled: Bool = false
     
-    private let fontBold = FontFamily.SFProDisplay.bold
+    private let constant = Constant()
+    
     private let plus = SFSymbol.plus
-    private let blueColor = Asset.Colors._0d72ff.swiftUIColor
-    private let buttonEdgeInset = EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
     
     var body: some View {
         HStack {
-            Text("Добавить туриста")
-                .font(.custom(fontBold, size: 22))
+            Text(constant.addTouristTitle)
+                .font(
+                    .custom(constant.fontBold, size: constant.fontBoldSize)
+                )
                 .multilineTextAlignment(.leading)
             
             Spacer()
@@ -41,19 +59,11 @@ struct PlusTouristView: View {
                 Image(systemSymbol: plus)
             }
             .buttonStyle(TagButtonStyle(
-                backgroundColor: isDesabled ? blueColor.opacity(0.01) : blueColor,
-                foregroundColor: Color.white,
-                edgeInset: buttonEdgeInset)
+                backgroundColor: isDesabled ? constant.blueColor.opacity(constant.opacity) : constant.blueColor,
+                foregroundColor: constant.foregroundColor,
+                edgeInset: constant.buttonEdgeInset)
             )
             .disabled(isDesabled)
         }
-    }
-}
-
-// MARK: - Preview
-
-struct PlusTouristView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlusTouristView()
     }
 }

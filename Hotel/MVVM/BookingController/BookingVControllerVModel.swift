@@ -14,7 +14,7 @@ final class BookingVControllerVModel: ObservableObject {
     
     @Published var model: Booking?
     
-    var title: String = "Бронирование"
+    let title: String = "Бронирование"
     var buttonTitle: String? {
         if let booking = model {
             var title = "Оплатить "
@@ -26,6 +26,11 @@ final class BookingVControllerVModel: ObservableObject {
             return nil
         }
     }
+    let infoAboutPurchaserTitle = "Информация о покупателе"
+    let phoneNumberTitle = "Номер телефона"
+    let emailTitle = "Почта"
+    let descriptionTitle = "Эти данные никому не передаються. После оплаты мы вышлем чек на указанный вами номер и почту"
+    let touristTitle = "турист"
     
     @Published var phoneNumber: String = ""
     @Published var isValidPhoneNumber: Bool = true
@@ -37,7 +42,7 @@ final class BookingVControllerVModel: ObservableObject {
     
     private var lastIndex: Int = 0
     
-    private var networkService = NetworkService()
+    private let networkService = NetworkService()
     private weak var appCoordinator: AppCoordinator?
     private let validation: Validation = Validation()
     

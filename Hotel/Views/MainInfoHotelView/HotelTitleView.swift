@@ -7,42 +7,53 @@
 
 import SwiftUI
 
+// MARK: - Constant
+
+extension HotelTitleView {
+    struct Constant {
+        let minusEighteenPadding: CGFloat = -18
+        let fourPadding: CGFloat = 4
+        
+        let fontBold = GeneralConstatnt.fontBold
+        let fontBoldSize: CGFloat = 22
+        let fontRegular = GeneralConstatnt.fontRegular
+        let fontRegularSize: CGFloat = 15
+        
+        let foregroundColor = Color(asset: Asset.Colors._0d72ff)
+        
+        let lineLimit = 1
+    }
+}
+
 struct HotelTitleView: View {
     // MARK: - Attributes
     
     var name: String
     var adress: String
     
-    private let foregroundColor = Color(asset: Asset.Colors._0d72ff)
+    private let constant = Constant()
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(name)
                 .font(
-                    .custom(FontFamily.SFProDisplay.bold, size: 22)
+                    .custom(constant.fontBold, size: constant.fontBoldSize)
                 )
                 .multilineTextAlignment(.leading)
-                .padding(.bottom, 4)
-                .padding(.leading, -18)
+                .padding(.bottom, constant.fourPadding)
+                .padding(.leading, constant.minusEighteenPadding)
             
             Button(action: {}) {
                 Text(adress)
-                    .font(.custom(FontFamily.SFProDisplay.regular, size: 15))
+                    .font(
+                        .custom(constant.fontRegular, size: constant.fontRegularSize)
+                    )
                     .multilineTextAlignment(.leading)
-                    .lineLimit(1)
-                    .padding(.leading, -18)
-                    .foregroundColor(foregroundColor)
+                    .lineLimit(constant.lineLimit)
+                    .padding(.leading, constant.minusEighteenPadding)
+                    .foregroundColor(constant.foregroundColor)
     
             }
         }
-    }
-}
-
-// MARK: - Preview
-
-struct HotelTitleView_Previews: PreviewProvider {
-    static var previews: some View {
-        HotelTitleView(name: "Лучший пятизвёздочный отель в Хургаде, Египет",
-                       adress: "Madinat Makadi, Safaga Road, Makadi Bay, Египет")
     }
 }

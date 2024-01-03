@@ -48,7 +48,7 @@
 		FA9E3B6C2B2F27E100413917 /* HotelVControllerVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E3B6B2B2F27E100413917 /* HotelVControllerVModel.swift */; };
 		FA9E3B6E2B2F445B00413917 /* ImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E3B6D2B2F445B00413917 /* ImageSlider.swift */; };
 		FA9E3B732B2F5E0E00413917 /* RaitingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E3B722B2F5E0E00413917 /* RaitingView.swift */; };
-		FA9E3B772B2F67B400413917 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E3B762B2F67B400413917 /* Constant.swift */; };
+		FA9E3B772B2F67B400413917 /* GeneralConstatnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E3B762B2F67B400413917 /* GeneralConstatnt.swift */; };
 		FA9E3B792B2F6C1400413917 /* HotelTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E3B782B2F6C1400413917 /* HotelTitleView.swift */; };
 		FABA1F792B347FEF000AA093 /* TouristModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA1F782B347FEF000AA093 /* TouristModel.swift */; };
 		FABA31C02B2E01CE00A74F46 /* RoundedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA31BF2B2E01CE00A74F46 /* RoundedButtonStyle.swift */; };
@@ -123,7 +123,7 @@
 		FA9E3B6B2B2F27E100413917 /* HotelVControllerVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelVControllerVModel.swift; sourceTree = "<group>"; };
 		FA9E3B6D2B2F445B00413917 /* ImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlider.swift; sourceTree = "<group>"; };
 		FA9E3B722B2F5E0E00413917 /* RaitingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaitingView.swift; sourceTree = "<group>"; };
-		FA9E3B762B2F67B400413917 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		FA9E3B762B2F67B400413917 /* GeneralConstatnt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralConstatnt.swift; sourceTree = "<group>"; };
 		FA9E3B782B2F6C1400413917 /* HotelTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelTitleView.swift; sourceTree = "<group>"; };
 		FABA1F782B347FEF000AA093 /* TouristModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristModel.swift; sourceTree = "<group>"; };
 		FABA31BF2B2E01CE00A74F46 /* RoundedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonStyle.swift; sourceTree = "<group>"; };
@@ -358,7 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				FABA31D92B2E284500A74F46 /* JSONHelper.swift */,
-				FA9E3B762B2F67B400413917 /* Constant.swift */,
+				FA9E3B762B2F67B400413917 /* GeneralConstatnt.swift */,
 				FA6F4C332B2F7D3200D3C32A /* NumericFormatter.swift */,
 				FA39558D2B35C88C00663CD1 /* Validation.swift */,
 				FABA31CB2B2E1F3500A74F46 /* Errors */,
@@ -725,7 +725,7 @@
 				FA505A182B2E4B5100C833F9 /* Booking.swift in Sources */,
 				FAE2CACF2B31ED2D0075A7A7 /* RoomsVController.swift in Sources */,
 				FABA31D62B2E267B00A74F46 /* Hotel.swift in Sources */,
-				FA9E3B772B2F67B400413917 /* Constant.swift in Sources */,
+				FA9E3B772B2F67B400413917 /* GeneralConstatnt.swift in Sources */,
 				FA139DB22B2DFECF00B2144C /* XCAssets+Generated.swift in Sources */,
 				FA6F4C302B2F76D200D3C32A /* MainInfoHotelView.swift in Sources */,
 				FAE2CAC42B31C6610075A7A7 /* CustomScrollView.swift in Sources */,
@@ -899,7 +899,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.planethost.Hotel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -930,7 +930,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.planethost.Hotel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

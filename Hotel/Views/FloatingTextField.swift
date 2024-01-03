@@ -9,6 +9,35 @@ import SwiftUI
 import AnyFormatKit
 import AnyFormatKitSwiftUI
 
+// MARK: - Constant
+
+extension FloatingTextField {
+    struct Constant {
+        let fontRegular = GeneralConstatnt.fontRegular
+        let fontRegularSize: CGFloat = 17
+        
+        let titleColor = Asset.Colors.a9abb7.swiftUIColor
+        let rectangleColor = Asset.Colors.f6f6f9424242.swiftUIColor
+        let alertColor = Asset.Colors.eb5757.swiftUIColor
+        let textColor = Asset.Colors._000000Ffffff.swiftUIColor
+        let clear = Color.clear
+        
+        let radius: CGFloat = 10
+        let edgeInsets = EdgeInsets(top: -16, leading:  -16, bottom: -16, trailing: -16)
+        let duration: CGFloat = 0.1
+        
+        let offsetOne: CGFloat = 0
+        let offsetTwo: CGFloat = -27
+        
+        let scaleOne: CGFloat = 1
+        let scaleTwo: CGFloat = 0.6
+        
+        let dateMask = "##.##.####"
+        let phoneMask: (placeholder: String, textPattern: String, patternSymbol: Character) = ("+7", "+7 (***) *** ** **", "*")
+        let passportNumberMask = "## #######"
+    }
+}
+
 struct FloatingTextField: View {
     // MARK: - Attributes
     
@@ -16,32 +45,22 @@ struct FloatingTextField: View {
     @Binding var text: String
     @Binding var isValid: Bool
     
-    private let type: TextFieldType 
+    private let type: TextFieldType
+    private let constant = Constant()
+    
     @FocusState private var focusedField: Field?
     @State private var isTap: Bool = false
-    
-    private let font = FontFamily.SFProDisplay.regular
-    private let titleColor = Asset.Colors.a9abb7.swiftUIColor
-    private let radius: CGFloat = 10
-    private let rectangleColor = Asset.Colors.f6f6f9424242.swiftUIColor
-    private let alertColor = Asset.Colors.eb5757.swiftUIColor
-    private let textColor = Asset.Colors._000000Ffffff.swiftUIColor
 
     var body: some View {
         getTextField(type: type)
             .background(
                 Rectangle()
-                    .foregroundColor(isValid ? rectangleColor : alertColor)
-                    .cornerRadius(radius)
-                    .padding(EdgeInsets(top: -16,
-                                        leading:  -16,
-                                        bottom: -16,
-                                        trailing: -16
-                                       ))
+                    .foregroundColor(isValid ? constant.rectangleColor : constant.alertColor)
+                    .cornerRadius(constant.radius)
+                    .padding(constant.edgeInsets)
             )
-            .animation(.default, value: isValid)
-            .animation(.easeOut(duration: 0.1), value: text.isEmpty)
-            .animation(.easeOut(duration: 0.1), value: isTap)
+            .animation(.easeOut(duration: constant.duration), value: text.isEmpty)
+            .animation(.easeOut(duration: constant.duration), value: isTap)
     }
     
     
@@ -62,10 +81,12 @@ struct FloatingTextField: View {
         case .text:
             ZStack(alignment: .leading) {
                 Text(title)
-                    .font(.custom(font, size: 17))
-                    .foregroundColor(titleColor)
-                    .offset(y: text.isEmpty ? 0 : -27)
-                    .scaleEffect(text.isEmpty ? 1 : 0.6, anchor: .leading)
+                    .font(
+                        .custom(constant.fontRegular, size: constant.fontRegularSize)
+                    )
+                    .foregroundColor(constant.titleColor)
+                    .offset(y: text.isEmpty ? constant.offsetOne : constant.offsetTwo)
+                    .scaleEffect(text.isEmpty ? constant.scaleOne : constant.scaleTwo, anchor: .leading)
 
                 TextField("", text: $text)
                     .focused($focusedField, equals: .text)
@@ -79,13 +100,15 @@ struct FloatingTextField: View {
         case .date:
             ZStack(alignment: .leading) {
                 Text(title)
-                    .font(.custom(font, size: 17))
-                    .foregroundColor(titleColor)
-                    .offset(y: text.isEmpty ? 0 : -27)
-                    .scaleEffect(text.isEmpty ? 1 : 0.6, anchor: .leading)
+                    .font(
+                        .custom(constant.fontRegular, size: constant.fontRegularSize)
+                    )
+                    .foregroundColor(constant.titleColor)
+                    .offset(y: text.isEmpty ? constant.offsetOne : constant.offsetTwo)
+                    .scaleEffect(text.isEmpty ? constant.scaleOne : constant.scaleTwo, anchor: .leading)
 
                 FormatTextField(unformattedText: $text,
-                                textPattern: "##.##.####")
+                                textPattern: constant.dateMask)
                 .keyboardType(.numberPad)
                 .submitLabel(.next)
                 .focused($focusedField, equals: .text)
@@ -98,16 +121,18 @@ struct FloatingTextField: View {
         case .phoneNumber:
             ZStack(alignment: .leading) {
                 Text(title)
-                    .font(.custom(font, size: 17))
-                    .foregroundColor(titleColor)
-                    .offset(y: !isTap ? 0 : -27)
-                    .scaleEffect(!isTap ? 1 : 0.6, anchor: .leading)
+                    .font(
+                        .custom(constant.fontRegular, size: constant.fontRegularSize)
+                    )
+                    .foregroundColor(constant.titleColor)
+                    .offset(y: !isTap ? constant.offsetOne : constant.offsetTwo)
+                    .scaleEffect(!isTap ? constant.scaleOne : constant.scaleTwo, anchor: .leading)
 
                 FormatStartTextField(unformattedText: $text,
-                                     placeholder: "+7",
-                                     formatter: PlaceholderTextInputFormatter(textPattern: "+7 (***) *** ** **", patternSymbol: "*"))
+                                     placeholder: constant.phoneMask.placeholder,
+                                     formatter: PlaceholderTextInputFormatter(textPattern: constant.phoneMask.textPattern, patternSymbol: constant.phoneMask.patternSymbol))
                 .keyboardType(.numberPad)
-                .foregroundColor(isTap ? textColor : Color.clear)
+                .foregroundColor(isTap ? constant.textColor : constant.clear)
                 .focused($focusedField, equals: .text)
                 .onTapGesture(perform: {
                     self.isTap = true
@@ -120,10 +145,12 @@ struct FloatingTextField: View {
         case .email:
             ZStack(alignment: .leading) {
                 Text(title)
-                    .font(.custom(font, size: 17))
-                    .foregroundColor(titleColor)
-                    .offset(y: text.isEmpty ? 0 : -27)
-                    .scaleEffect(text.isEmpty ? 1 : 0.6, anchor: .leading)
+                    .font(
+                        .custom(constant.fontRegular, size: constant.fontRegularSize)
+                    )
+                    .foregroundColor(constant.titleColor)
+                    .offset(y: text.isEmpty ? constant.offsetOne : constant.offsetTwo)
+                    .scaleEffect(text.isEmpty ? constant.scaleOne : constant.scaleTwo, anchor: .leading)
 
                 TextField("", text: $text)
                     .focused($focusedField, equals: .text)
@@ -138,13 +165,15 @@ struct FloatingTextField: View {
         case .passportNumber:
             ZStack(alignment: .leading) {
                 Text(title)
-                    .font(.custom(font, size: 17))
-                    .foregroundColor(titleColor)
-                    .offset(y: text.isEmpty ? 0 : -27)
-                    .scaleEffect(text.isEmpty ? 1 : 0.6, anchor: .leading)
+                    .font(
+                        .custom(constant.fontRegular, size: constant.fontRegularSize)
+                    )
+                    .foregroundColor(constant.titleColor)
+                    .offset(y: text.isEmpty ? constant.offsetOne : constant.offsetTwo)
+                    .scaleEffect(text.isEmpty ? constant.scaleOne : constant.scaleTwo, anchor: .leading)
 
                 FormatTextField(unformattedText: $text,
-                                textPattern: "## #######")
+                                textPattern: constant.passportNumberMask)
                 .keyboardType(.numberPad)
                 .submitLabel(.next)
                 .onChange(of: text, perform: { _ in

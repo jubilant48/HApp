@@ -30,10 +30,3 @@ struct CustomSection<Content: View>: View {
     }
 }
 
-// MARK: - Preview
-
-struct CustomSection_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomSection() { }
-    }
-}

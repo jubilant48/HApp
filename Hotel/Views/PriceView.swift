@@ -7,28 +7,47 @@
 
 import SwiftUI
 
+// MARK: - Constant
+
+extension PriceView {
+    struct Constant {
+        let padding: CGFloat = -35
+        
+        let fontBold = GeneralConstatnt.fontBold
+        let fontBoldSize: CGFloat = 30
+        let fontRegular = GeneralConstatnt.fontRegular
+        let fontRegularSize: CGFloat = 17
+        
+        let foregroundColor = Color(asset: Asset.Colors._828796)
+        
+        let baselineOffset: CGFloat = -10
+    }
+}
+
 struct PriceView: View {
     // MARK: - Attributes
     
     var priceForIt: String
     private let title: String
     
-    private let foregroundColor = Color(asset: Asset.Colors._828796)
-    private let sfProDisplayBold = FontFamily.SFProDisplay.bold
-    private let sfProDisplayRegular = FontFamily.SFProDisplay.regular
+    private let constant = Constant()
     
     var body: some View {
         HStack() {
             Text(title)
-                .font(.custom(sfProDisplayBold, size: 30))
+                .font(
+                    .custom(constant.fontBold, size: constant.fontBoldSize)
+                )
                 .multilineTextAlignment(.leading)
-                .padding(.leading, -35)
+                .padding(.leading, constant.padding)
             
             Text(priceForIt.lowercased())
-                .font(.custom(sfProDisplayRegular, size: 17))
+                .font(
+                    .custom(constant.fontRegular, size: constant.fontRegularSize)
+                )
                 .multilineTextAlignment(.leading)
-                .baselineOffset(-10)
-                .foregroundColor(foregroundColor)
+                .baselineOffset(constant.baselineOffset)
+                .foregroundColor(constant.foregroundColor)
         }
     }
     
@@ -42,13 +61,5 @@ struct PriceView: View {
     init(_ price: Int, per additionalInfo: String) {
         self.title = "\(NumericFormatter.decimalFormat(Double(price), format: .ru)) ₽"
         self.priceForIt = additionalInfo
-    }
-}
-
-// MARK: - Preview
-
-struct PriceView_Previews: PreviewProvider {
-    static var previews: some View {
-        PriceView(from: 134268, forIt: "За тур с перелётом")
     }
 }

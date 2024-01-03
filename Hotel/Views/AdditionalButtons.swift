@@ -7,15 +7,38 @@
 
 import SwiftUI
 
+// MARK: - Constant
+
+extension AdditionalButtons {
+    struct Constant {
+        let cornerRadius: CGFloat = 15
+        
+        let fivePadding: CGFloat = 5
+        let tenPadding: CGFloat = 10
+        let fifteenPadding: CGFloat = 15
+        let padding = GeneralConstatnt.padding
+        
+        let fontMedium = FontFamily.SFProDisplay.medium
+        let fontRegular = FontFamily.SFProDisplay.regular
+        let fontSize: CGFloat = 17
+        
+        let textWidth: CGFloat = 200
+        
+        let facilitiesTitle = "Удобства"
+        let whatIncludedTitle = "Что включено"
+        let whatNotIncludedTitle = "Что не включено"
+        let essentialsTitle = "Самое необходимое"
+        
+        let sectionBackgroundColor = Asset.Colors.fbfbfc151515.swiftUIColor
+        let textColor = Asset.Colors._000000Ffffff.swiftUIColor
+        let secondaryTextColor = Asset.Colors._828796.swiftUIColor
+    }
+}
+
 struct AdditionalButtons: View {
     // MARK: - Attributes
-    
-    private let sfProDisplayMedium = FontFamily.SFProDisplay.medium
-    private let sfProDisplayRegular = FontFamily.SFProDisplay.regular
-    
-    private let sectionBackgroundColor = Asset.Colors.fbfbfc151515.swiftUIColor
-    private let textColor = Asset.Colors._000000Ffffff.swiftUIColor
-    private let secondaryTextColor = Asset.Colors._828796.swiftUIColor
+        
+    private let constant = Constant()
     
     private let emojiHappyImage = Asset.Images.emojiHappy.swiftUIImage
     private let tickSquareImage = Asset.Images.tickSquare.swiftUIImage
@@ -29,32 +52,32 @@ struct AdditionalButtons: View {
                 Button(action: {}) {
                     HStack {
                         emojiHappyImage
-                            .padding(.trailing, 5)
-                            .padding(.bottom, 5)
+                            .padding([.trailing, .bottom], constant.fivePadding)
                         
                         ZStack(alignment: .bottom) {
                             HStack {
                                 VStack {
-                                    Text("Удобства")
+                                    Text(constant.facilitiesTitle)
                                         .font(
-                                            .custom(sfProDisplayMedium, size: 17)
+                                            .custom(constant.fontMedium, size: constant.fontSize)
                                         )
-                                        .foregroundColor(textColor)
-                                        .frame(width: 200, alignment: .leading)
-                                    Text("Самое необходимое")
+                                        .foregroundColor(constant.textColor)
+                                        .frame(width: constant.textWidth, alignment: .leading)
+                                    
+                                    Text(constant.essentialsTitle)
                                         .font(
-                                            .custom(sfProDisplayRegular, size: 17)
+                                            .custom(constant.fontRegular, size: constant.fontSize)
                                         )
-                                        .foregroundColor(secondaryTextColor)
-                                        .frame(width: 200, alignment: .leading)
+                                        .foregroundColor(constant.secondaryTextColor)
+                                        .frame(width: constant.textWidth, alignment: .leading)
                                 }
                                 Spacer()
                                 arrowImage
                             }
-                            .padding(.bottom, 10)
+                            .padding(.bottom, constant.tenPadding)
                             
                             Divider()
-                                .padding(.trailing, 10)
+                                .padding(.trailing, constant.tenPadding)
                         }
                     }
                 }
@@ -62,32 +85,32 @@ struct AdditionalButtons: View {
                 Button(action: {}) {
                     HStack {
                         tickSquareImage
-                            .padding(.trailing, 5)
-                            .padding(.bottom, 5)
+                            .padding([.trailing, .bottom], constant.fivePadding)
                         
                         ZStack(alignment: .bottom) {
                             HStack {
                                 VStack {
-                                    Text("Что включено")
+                                    Text(constant.whatIncludedTitle)
                                         .font(
-                                            .custom(sfProDisplayMedium, size: 17)
+                                            .custom(constant.fontMedium, size: constant.fontSize)
                                         )
-                                        .foregroundColor(textColor)
-                                        .frame(width: 200, alignment: .leading)
-                                    Text("Самое необходимое")
+                                        .foregroundColor(constant.textColor)
+                                        .frame(width: constant.textWidth, alignment: .leading)
+                                    
+                                    Text(constant.essentialsTitle)
                                         .font(
-                                            .custom(sfProDisplayRegular, size: 17)
+                                            .custom(constant.fontRegular, size: constant.fontSize)
                                         )
-                                        .foregroundColor(secondaryTextColor)
-                                        .frame(width: 200, alignment: .leading)
+                                        .foregroundColor(constant.secondaryTextColor)
+                                        .frame(width: constant.textWidth, alignment: .leading)
                                 }
                                 Spacer()
                                 arrowImage
                             }
-                            .padding(.bottom, 10)
+                            .padding(.bottom, constant.tenPadding)
                             
                             Divider()
-                                .padding(.trailing, 10)
+                                .padding(.trailing, constant.tenPadding)
                         }
                     }
                 }
@@ -95,22 +118,23 @@ struct AdditionalButtons: View {
                 Button(action: {}) {
                     HStack {
                         closeSquareImage
-                            .padding(.trailing, 5)
+                            .padding(.trailing, constant.fivePadding)
                         
                         Group {
                             VStack {
-                                Text("Что не включено")
+                                Text(constant.whatNotIncludedTitle)
                                     .font(
-                                        .custom(sfProDisplayMedium, size: 17)
+                                        .custom(constant.fontMedium, size: constant.fontSize)
                                     )
-                                    .foregroundColor(textColor)
-                                    .frame(width: 200, alignment: .leading)
-                                Text("Самое необходимое")
+                                    .foregroundColor(constant.textColor)
+                                    .frame(width: constant.textWidth, alignment: .leading)
+                                
+                                Text(constant.essentialsTitle)
                                     .font(
-                                        .custom(sfProDisplayRegular, size: 17)
+                                        .custom(constant.fontRegular, size: constant.fontSize)
                                     )
-                                    .foregroundColor(secondaryTextColor)
-                                    .frame(width: 200, alignment: .leading)
+                                    .foregroundColor(constant.secondaryTextColor)
+                                    .frame(width: constant.textWidth, alignment: .leading)
                             }
                             Spacer()
                             arrowImage
@@ -119,19 +143,11 @@ struct AdditionalButtons: View {
                 }
                 
             }
-            .padding(.all, 15)
+            .padding(.all, constant.fifteenPadding)
             
         }
-        .background(sectionBackgroundColor)
-        .cornerRadius(15)
-        .padding(.all, Constant.GeneralConstatnt.padding)
-    }
-}
-
-// MARK: - Preview
-
-struct AdditionalButtons_Previews: PreviewProvider {
-    static var previews: some View {
-        AdditionalButtons()
+        .background(constant.sectionBackgroundColor)
+        .cornerRadius(constant.cornerRadius)
+        .padding(.all, constant.padding)
     }
 }

@@ -7,10 +7,20 @@
 
 import SwiftUI
 
+// MARK: - Constant
+
+extension RoomsVController {
+    struct Constant {
+        let bottomPadding: CGFloat = 4
+    }
+}
+
 struct RoomsVController: View {
     // MARK: - Attributes
     
     @StateObject var viewModel: RoomsVControllerVModel
+    
+    private let constant = Constant()
     
     var body: some View {
         GeometryReader { geometry in
@@ -25,27 +35,18 @@ struct RoomsVController: View {
                                  price: room.price,
                                  pricePer: room.pricePer,
                                  transition: viewModel.transition)
-                        .padding(.bottom, 4)
+                        .padding(.bottom, constant.bottomPadding)
                     }
                 }
                 
             } else {
+                
                 LoadView()
                     .frame(width: geometry.size.width, height: geometry.size.height)
+                
             }
             
-        }
+        } // - Geometry reader
     }
     
-}
-
-// MARK: - Priview
-
-struct RoomsVController_Previews: PreviewProvider {
-    static var previews: some View {
-        RoomsVController(
-            viewModel: RoomsVControllerVModel(title: "Лучший пятизвёздочный отель в Хургаде, Египет",
-                                              appCoordinator: MainVController_Previews.appCoordinator)
-        )
-    }
 }

@@ -7,6 +7,28 @@
 
 import SwiftUI
 
+// MARK: - Constant
+
+extension RoomCell {
+    struct Constant {
+        let minusEightPadding: CGFloat = -8
+        let padding = GeneralConstatnt.padding
+        let tenPadding: CGFloat = 10
+        let fourteenPadding: CGFloat = 14
+        
+        let imageSiliderHeight: CGFloat = 257
+        
+        let titleFont = GeneralConstatnt.fontBold
+        let titleFontSize: CGFloat = 22
+        
+        let buttonTitle = "Выбрать номер"
+        let moreDetailsAboutRoomTitle = "Подробнее о номере"
+        
+        let detailButtonColor = Asset.Colors._0d72ff.swiftUIColor
+        let opacity: CGFloat = 0.1
+    }
+}
+
 @MainActor
 struct RoomCell: View {
     // MARK: - Attributes
@@ -18,77 +40,57 @@ struct RoomCell: View {
     var pricePer: String
     var transition: () -> Void
     
-    private let titleFont = FontFamily.SFProDisplay.bold
+    private let constant = Constant()
+    
     private let arrowImage = Asset.Images.blueRightArrow.swiftUIImage
-    private let detailButtonColor = Asset.Colors._0d72ff.swiftUIColor
-    private let buttonTitle = "Выбрать номер"
     
     var body: some View {
         CustomSection {
             VStack {
                 ImageSlider(imageUrls: imageUrls)
-                    .frame(height: Constant.ImageSliderConstatnt.height)
-                    .padding(.all,
-                             Constant.GeneralConstatnt.padding)
+                    .frame(height: constant.imageSiliderHeight)
+                    .padding(.all, constant.padding)
+                
                 HStack {
                     Text(title)
                         .font(
-                            .custom(titleFont, size: 22)
+                            .custom(constant.titleFont, size: constant.titleFontSize)
                         )
-                        .padding([.leading, .trailing],
-                                 Constant.GeneralConstatnt.padding)
+                        .padding([.leading, .trailing], constant.padding)
+                    
                     Spacer()
                 }
                 
                 TagsView(tags)
-                    .padding([.leading, .trailing],
-                             10)
+                    .padding([.leading, .trailing], constant.tenPadding)
+                
                 HStack {
                     Button(action: {}) {
                         HStack{
-                            Text("Подробнее о номере")
+                            Text(constant.moreDetailsAboutRoomTitle)
+                            
                             arrowImage
-                                .foregroundColor(detailButtonColor)
-                                .padding(.leading, -8)
+                                .foregroundColor(constant.detailButtonColor)
+                                .padding(.leading, constant.minusEightPadding)
                         }
                         
                     }
-                    .buttonStyle(TagButtonStyle(backgroundColor: detailButtonColor.opacity(0.1),
-                                                foregroundColor: detailButtonColor))
+                    .buttonStyle(TagButtonStyle(backgroundColor: constant.detailButtonColor.opacity(constant.opacity),
+                                                foregroundColor: constant.detailButtonColor))
                     Spacer()
                 }
-                .padding([.leading, .trailing], 14)
+                .padding([.leading, .trailing], constant.fourteenPadding)
                 
                 PriceView(price, per: pricePer)
-                    .padding(.all,
-                             Constant.GeneralConstatnt.padding)
+                    .padding(.all, constant.padding)
                 
-                Button(buttonTitle) {
+                Button(constant.buttonTitle) {
                     transition()
                 }
                 .buttonStyle(RoundedButtonStyle())
-                .padding([.leading, .trailing, .bottom],
-                         Constant.GeneralConstatnt.padding)
+                .padding([.leading, .trailing, .bottom], constant.padding)
+                
             }
         }
-    }
-}
-
-// MARK: - Preview
-
-struct RoomCell_Previews: PreviewProvider {
-    static var previews: some View {
-        RoomCell(
-            imageUrls: [
-                URL(string: "https://www.atorus.ru/sites/default/files/upload/image/News/56871/риксос сигейт.jpg"),
-                URL(string: "https://q.bstatic.com/xdata/images/hotel/max1024x768/267647265.jpg?k=c8233ff42c39f9bac99e703900a866dfbad8bcdd6740ba4e594659564e67f191&o="),
-                URL(string: "https://worlds-trip.ru/wp-content/uploads/2022/10/white-hills-resort-5.jpeg")
-            ],
-            title: "Стандартный номер с видом на бассейн",
-            tags: ["Все вклюено", "Кондиционер"],
-            price: 186600,
-            pricePer: "За 7 ночей с перелетом",
-            transition: {}
-        )
     }
 }

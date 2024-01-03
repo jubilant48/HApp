@@ -7,12 +7,20 @@
 
 import SwiftUI
 
+// MARK: - Constant
+
+extension MainVController {
+    struct Constant {
+        let accentColor = Asset.Colors._000000Ffffff.swiftUIColor
+    }
+}
+
 struct MainVController: View {
     // MARK: - Attributes
     
     @EnvironmentObject var appCoordinator: AppCoordinator
     
-    private let accentColor = Asset.Colors._000000Ffffff.swiftUIColor
+    private let constant = Constant()
     
     var body: some View {
         NavigationView {
@@ -26,18 +34,6 @@ struct MainVController: View {
             }
   
         }
-        .accentColor(accentColor)
-    }
-    
-}
-
-// MARK: - Preview
-
-struct MainVController_Previews: PreviewProvider {
-    @State static var appCoordinator = AppCoordinator()
-    
-    static var previews: some View {
-        MainVController()
-            .environmentObject(appCoordinator)
+        .accentColor(constant.accentColor)
     }
 }

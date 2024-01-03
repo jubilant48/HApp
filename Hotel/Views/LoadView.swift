@@ -10,17 +10,11 @@ import SwiftUI
 struct LoadView: View {
     // MARK: - Attributes
     
+    private let title = "Загрузка"
+    
     var body: some View {
         VStack {
-            ProgressView("Загрузка")
+            ProgressView(title)
         }
-    }
-}
-
-// MARK: - Prieview
-
-struct LoadView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoadView()
     }
 }

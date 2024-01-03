@@ -7,15 +7,30 @@
 
 import SwiftUI
 
+// MARK: - Constant
+
+extension BookingVController {
+    struct Constant {
+        let padding: CGFloat = GeneralConstatnt.padding
+        let eightPointPadding: CGFloat = 8
+        let twelfPointPadding: CGFloat = 12
+        
+        let fontBold = GeneralConstatnt.fontBold
+        let fontBoldSize: CGFloat = 22
+        let fontRegular = GeneralConstatnt.fontRegular
+        let fontRegularSize: CGFloat = 14
+        
+        let grayColor = Asset.Colors._828796.swiftUIColor
+        let blueColor = Asset.Colors._0d72ff.swiftUIColor
+    }
+}
+
 struct BookingVController: View {
     // MARK: - Attributes
     
     @StateObject var viewModel: BookingVControllerVModel
     
-    private let fontBold = FontFamily.SFProDisplay.bold
-    private let fontRegular = FontFamily.SFProDisplay.regular
-    private let grayColor = Asset.Colors._828796.swiftUIColor
-    private let blueColor = Asset.Colors._0d72ff.swiftUIColor
+    private let constant = Constant()
     
     var body: some View {
         GeometryReader { geometry in
@@ -28,59 +43,53 @@ struct BookingVController: View {
                                           adress: booking.hotelAdress,
                                           rating: booking.horating,
                                           ratingName: booking.ratingName)
-                        .padding(.all,
-                                 Constant.GeneralConstatnt.padding)
+                        .padding(.all, constant.padding)
                     }
                     
                     CustomSection {
                         LinesOfDataView(lines: viewModel.getBookingData()) { }
-                            .padding(.all,
-                                     Constant.GeneralConstatnt.padding)
+                            .padding(.all, constant.padding)
                     }
                     
                     CustomSection {
                         VStack(alignment: .leading) {
-                            Text("Информация о покупателе")
-                                .font(.custom(fontBold, size: 22))
+                            Text(viewModel.infoAboutPurchaserTitle)
+                                .font(.custom(constant.fontBold, size: constant.fontBoldSize))
                                 .multilineTextAlignment(.leading)
                             
-                            FloatingTextField(title: .constant("Номер телефона"),
+                            FloatingTextField(title: .constant(viewModel.phoneNumberTitle),
                                               text: $viewModel.phoneNumber,
                                               isValid: $viewModel.isValidPhoneNumber,
                                               type: .phoneNumber)
-                            .padding(.all,
-                                     Constant.GeneralConstatnt.padding)
+                            .padding(.all, constant.padding)
                             
-                            FloatingTextField(title: .constant("Почта"),
+                            FloatingTextField(title: .constant(viewModel.emailTitle),
                                               text: $viewModel.email,
                                               isValid: $viewModel.isValidEmail, type: .email)
-                            .padding(.all,
-                                     Constant.GeneralConstatnt.padding)
+                            .padding(.all, constant.padding)
                             
-                            Text("Эти данные никому не передаються. После оплаты мы вышлем чек на указанный вами номер и почту")
-                                .font(.custom(fontRegular, size: 14))
-                                .foregroundColor(grayColor)
+                            Text(viewModel.descriptionTitle)
+                                .font(.custom(constant.fontRegular, size: constant.fontRegularSize))
+                                .foregroundColor(constant.grayColor)
                                 .multilineTextAlignment(.leading)
-                                .padding([.leading, .trailing, .bottom],
-                                         8)
+                                .padding([.leading, .trailing, .bottom], constant.eightPointPadding)
                         }
-                        .padding(.all,
-                                 Constant.GeneralConstatnt.padding)
+                        .padding(.all, constant.padding)
                     }
                     
                     VStack {
                         ForEach($viewModel.tourists, id: \.self) { tourist in
                             CustomSection {
-                                CollapsibaleView(title: "\((tourist.wrappedValue.index + 1).asOrdinalRus) турист")
+                                CollapsibaleView(title: "\((tourist.wrappedValue.index + 1).asOrdinalRus) \(viewModel.touristTitle)")
                                     .environmentObject(viewModel.tourists[tourist.wrappedValue.index])
-                                    .padding(.all, Constant.GeneralConstatnt.padding)
+                                    .padding(.all, constant.padding)
                             }
                         }
                         
                         CustomSection {
                             PlusTouristView()
                                 .environmentObject(viewModel)
-                                .padding(.all, Constant.GeneralConstatnt.padding)
+                                .padding(.all, constant.padding)
                         }
                     }
                     
@@ -88,11 +97,10 @@ struct BookingVController: View {
                         LinesOfDataView(lines: viewModel.getDataOfPrice(), aligment: .right) {
                             LinesOfDataViewMethods()
                                 .lineOfData(line: viewModel.getLastLine(),
-                                            lastColor: blueColor,
-                                            lastFont: fontBold)
+                                            lastColor: constant.blueColor,
+                                            lastFont: constant.fontBold)
                         }
-                        .padding(.all,
-                                 Constant.GeneralConstatnt.padding)
+                        .padding(.all, constant.padding)
                     }
                     
                 }
@@ -105,7 +113,7 @@ struct BookingVController: View {
                             viewModel.transition()
                         }
                         .buttonStyle(RoundedButtonStyle())
-                        .padding(.top, 12)
+                        .padding(.top, constant.twelfPointPadding)
                     }
                 }
                 
@@ -113,16 +121,7 @@ struct BookingVController: View {
                 LoadView()
                     .frame(width: geometry.size.width, height: geometry.size.height)
             }
+            
         } // - Geometry Reader
-    }
-}
-
-// MARK: - Preview
-
-struct BookingVController_Previews: PreviewProvider {
-    static var previews: some View {
-        BookingVController(
-            viewModel: BookingVControllerVModel(appCoordinator: MainVController_Previews.appCoordinator)
-        )
     }
 }

@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+// MARK: - Constant
+
+extension MainInfoHotelView {
+    struct Constant {
+        let padding: CGFloat = GeneralConstatnt.padding
+    }
+}
+
 struct MainInfoHotelView: View {
     // MARK: - Attributes
     
@@ -14,6 +22,8 @@ struct MainInfoHotelView: View {
     let adress: String
     let rating: Int
     let ratingName: String
+    
+    private let constant = Constant()
     
     var body: some View {
         VStack {
@@ -25,19 +35,7 @@ struct MainInfoHotelView: View {
             }
             
             HotelTitleView(name: name, adress: adress)
-                .padding([.leading, .trailing],
-                         Constant.GeneralConstatnt.padding)
+                .padding([.leading, .trailing], constant.padding)
         }
-    }
-}
-
-// MARK: - Preview
-
-struct MainInfoHotelView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainInfoHotelView(name: "Лучший пятизвёздочный отель в Хургаде, Египет",
-                          adress: "Madinat Makadi, Safaga Road, Makadi Bay, Египет",
-                          rating: 5,
-                          ratingName: "Превосходно")
     }
 }

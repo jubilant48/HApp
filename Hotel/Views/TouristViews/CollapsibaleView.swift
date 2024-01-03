@@ -7,6 +7,20 @@
 
 import SwiftUI
 
+// MARK: - Constant
+
+extension CollapsibaleView {
+    struct Constant {
+        let fontBold = GeneralConstatnt.fontBold
+        let fontBoldSize: CGFloat = 22
+        
+        let blueColor = Asset.Colors._0d72ff.swiftUIColor
+        
+        let buttonEdgeInset = EdgeInsets(top: 13, leading: 10, bottom: 13, trailing: 10)
+        let opacity: CGFloat = 0.1
+    }
+}
+
 struct CollapsibaleView: View {
     // MARK: - Attributes
     
@@ -14,17 +28,16 @@ struct CollapsibaleView: View {
     
     @EnvironmentObject var tourist: TouristModel
     
-    private let fontBold = FontFamily.SFProDisplay.bold
-    private let blueColor = Asset.Colors._0d72ff.swiftUIColor
+    private let constant = Constant()
+    
     private let arrowUp = Asset.Images.arrowUp
     private let arrowDown = Asset.Images.arrowDown
-    private let buttonEdgeInset = EdgeInsets(top: 13, leading: 10, bottom: 13, trailing: 10)
     
     var body: some View {
         VStack {
             HStack {
                 Text(title)
-                    .font(.custom(fontBold, size: 22))
+                    .font(.custom(constant.fontBold, size: constant.fontBoldSize))
                     .multilineTextAlignment(.leading)
                 
                 Spacer()
@@ -37,9 +50,9 @@ struct CollapsibaleView: View {
                     Image(asset: tourist.isExpensed ? arrowUp : arrowDown)
                 }
                 .buttonStyle(TagButtonStyle(
-                    backgroundColor: blueColor.opacity(0.1),
-                    foregroundColor: blueColor,
-                    edgeInset: buttonEdgeInset)
+                    backgroundColor: constant.blueColor.opacity(constant.opacity),
+                    foregroundColor: constant.blueColor,
+                    edgeInset: constant.buttonEdgeInset)
                 )
             }
             
@@ -51,36 +64,9 @@ struct CollapsibaleView: View {
                 .frame(height: tourist.isExpensed ? nil : 0)
                 .clipped()
                 .animation(.easeOut, value: UUID())
-                .transition(.opacity)
+                .transition(.slide)
             }
             
         }
-    }
-}
-
-// MARK: - Preview
-
-struct CollapsibaleView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        VStack {
-            Section {
-                CollapsibaleView(title: "Первый турис")
-                    .padding()
-            }
-            .background(Color.white)
-            .cornerRadius(15)
-            .padding()
-            
-            Section {
-                CollapsibaleView(title: "Второй турис")
-                    .padding()
-            }
-            .background(Color.white)
-            .cornerRadius(15)
-            .padding()
-            
-        }
-        .background(Color.gray)
     }
 }

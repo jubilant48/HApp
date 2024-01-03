@@ -25,16 +25,3 @@ struct TagsView: View {
         self.tags = tags
     }
 }
-
-// MARK: - Preview
-
-struct PeculiaritiesView_Previews: PreviewProvider {
-    static var previews: some View {
-        TagsView([
-            "Бесплатный Wifi на всей территории отеля",
-            "1 км до пляжа",
-            "Бесплатный фитнес-клуб",
-            "20 км до аэропорта"
-        ])
-    }
-}

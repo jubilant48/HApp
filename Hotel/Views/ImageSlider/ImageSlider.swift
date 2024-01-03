@@ -9,15 +9,32 @@ import SwiftUI
 import SFSafeSymbols
 import CachedAsyncImage
 
+// MARK: - Constant
+
+extension ImageSlider {
+    struct Constant {
+        let cornderRadius: CGFloat = 15
+        
+        let twelfPadding: CGFloat = 12
+        let padding = GeneralConstatnt.padding
+        
+        let imageWidth: CGFloat = 50
+        let imageHeight: CGFloat = 50
+        
+        let errorColor = Color.red
+        
+        let errorTitle = "Ошибка загрузки\n изображения"
+    }
+}
+
 struct ImageSlider: View {
     // MARK: - Attributes
     
     @State private var selectedTab = 0
     
     var imageUrls: [URL?]
-    
-    private let cornderRadius: CGFloat = 15
-    private let errorColor = Color.red
+  
+    private let constant = Constant()
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -29,17 +46,17 @@ struct ImageSlider: View {
                     case .success(let image):
                         image
                             .resizable()
-                            .cornerRadius(cornderRadius)
+                            .cornerRadius(constant.cornderRadius)
                     case .failure(let error):
                         VStack {
                             Image(systemSymbol: .xCircle)
                                 .resizable()
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(errorColor)
-                                .padding(.all, 16)
-                            Text("Ошибка загрузки\n изображения")
+                                .frame(width: constant.imageWidth, height: constant.imageHeight)
+                                .foregroundColor(constant.errorColor)
+                                .padding(.all, constant.padding)
+                            Text(constant.errorTitle)
                                 .multilineTextAlignment(.center)
-                                .foregroundColor(errorColor)
+                                .foregroundColor(constant.errorColor)
                                 .onAppear {
                                     print(error.localizedDescription)
                                 }
@@ -56,15 +73,13 @@ struct ImageSlider: View {
         .overlay(
                 FiveDotsIndexView(numberOfPages: imageUrls.count,
                                   selectedTab: selectedTab)
-                .padding(.bottom, 12),
+                .padding(.bottom, constant.twelfPadding),
                 alignment: .bottom
         )
         .animation(.default, value: UUID())
-        .cornerRadius(cornderRadius)
+        .cornerRadius(constant.cornderRadius)
         
     }
-    
-    
 }
 
 // MARK: - Preview

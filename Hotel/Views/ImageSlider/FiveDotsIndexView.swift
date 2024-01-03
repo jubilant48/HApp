@@ -7,14 +7,25 @@
 
 import SwiftUI
 
+// MARK: - Constant
+
+extension FiveDotsIndexView {
+    struct Constant {
+        let cornerRadius: CGFloat = 5
+        let circleSize: CGFloat = 7
+        let circleSpacing: CGFloat = 5
+        
+        let edgeInsets = EdgeInsets(top: -5, leading: -10, bottom: -5, trailing: -10)
+    }
+}
+
 struct FiveDotsIndexView: View {
     // MARK: - Attributes
     
     var numberOfPages: Int
     let selectedTab: Int
     
-    private let circleSize: CGFloat = 7
-    private let circleSpacing: CGFloat = 5
+    private let constant = Constant()
     
     private let primaryColor = Color.black
     private let secondaryColor = Color.black.opacity(0.22)
@@ -25,14 +36,14 @@ struct FiveDotsIndexView: View {
     
     var body: some View {
         
-        HStack(spacing: circleSpacing) {
+        HStack(spacing: constant.circleSpacing) {
             ForEach(0..<numberOfPages) { index in
                 
                 if shouldShowIndex(index) {
                     Circle()
                         .fill(getColor(for: index))
-                        .frame(width: circleSize,
-                               height: circleSize)
+                        .frame(width: constant.circleSize,
+                               height: constant.circleSize)
                     
                 }
                 
@@ -41,18 +52,15 @@ struct FiveDotsIndexView: View {
         .background(
             Rectangle()
                 .foregroundColor(rectangelColor)
-                .cornerRadius(5)
-                .padding(EdgeInsets(top: -5,
-                                    leading: -10,
-                                    bottom: -5,
-                                    trailing: -10))
+                .cornerRadius(constant.cornerRadius)
+                .padding(constant.edgeInsets)
         )
     }
     
     // MARK: - Methods
     
     func shouldShowIndex(_ index: Int) -> Bool {
-        ((selectedTab - 1)...(selectedTab + 4)).contains(index)
+        ((selectedTab - 4)...(selectedTab + 4)).contains(index)
     }
     
     func getColor(for index: Int) -> Color {
@@ -71,11 +79,5 @@ struct FiveDotsIndexView: View {
         } else {
             return Color.clear
         }
-    }
-}
-
-struct FiveDotsIndexView_Previews: PreviewProvider {
-    static var previews: some View {
-        FiveDotsIndexView(numberOfPages: 5, selectedTab: 0)
     }
 }
