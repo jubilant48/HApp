@@ -44,7 +44,6 @@ struct FiveDotsIndexView: View {
                         .fill(getColor(for: index))
                         .frame(width: constant.circleSize,
                                height: constant.circleSize)
-                    
                 }
                 
             }
@@ -55,12 +54,15 @@ struct FiveDotsIndexView: View {
                 .cornerRadius(constant.cornerRadius)
                 .padding(constant.edgeInsets)
         )
+        
     }
     
     // MARK: - Methods
     
     func shouldShowIndex(_ index: Int) -> Bool {
-        ((selectedTab - 4)...(selectedTab + 4)).contains(index)
+        guard numberOfPages > 1 else { return false }
+        
+        return ((selectedTab - 4)...(selectedTab + 4)).contains(index)  
     }
     
     func getColor(for index: Int) -> Color {

@@ -41,6 +41,7 @@ final class HotelVControllerVModel: ObservableObject {
             }
         }
     }
+    
     @MainActor 
     func transition() {
         if let title = model?.name {

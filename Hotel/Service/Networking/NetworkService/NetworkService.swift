@@ -10,6 +10,8 @@ import SwiftUI
 final class NetworkService {
     // MARK: - Attributes
     
+    private let service = RequestService()
+    
     var hotelRequestTask: Task<Void, Never>? = nil
     var roomsRequestTask: Task<Void, Never>? = nil
     var bookingRequestTask: Task<Void, Never>? = nil
@@ -27,7 +29,7 @@ final class NetworkService {
     // MARK: - Methods
     
     func requestHotel(completion: @escaping (Result<Hotel, Error>) -> Void) {
-        let request = QueryBuilder()
+        let builder = QueryBuilder()
             .set(scheme: .https)
             .set(host: .mocky)
             .add(path: .v3)
@@ -36,7 +38,7 @@ final class NetworkService {
         
         hotelRequestTask = Task {
             do {
-                let hotel = try await request.create(type: Hotel.self)
+                let hotel = try await service.create(request: builder.create(), type: Hotel.self)
                 completion(.success(hotel))
             } catch {
                 completion(.failure(error))
@@ -47,7 +49,7 @@ final class NetworkService {
     }
     
     func requestRooms(completion: @escaping (Result<Rooms, Error>) -> Void) {
-        let request = QueryBuilder()
+        let builder = QueryBuilder()
             .set(scheme: .https)
             .set(host: .mocky)
             .add(path: .v3)
@@ -56,7 +58,7 @@ final class NetworkService {
         
         roomsRequestTask = Task {
             do {
-                let rooms = try await request.create(type: Rooms.self)
+                let rooms = try await service.create(request: builder.create(), type: Rooms.self)
                 completion(.success(rooms))
             } catch {
                 completion(.failure(error))
@@ -67,7 +69,7 @@ final class NetworkService {
     }
     
     func requestBooking(completion: @escaping (Result<Booking, Error>) -> Void) {
-        let request = QueryBuilder()
+        let builder = QueryBuilder()
             .set(scheme: .https)
             .set(host: .mocky)
             .add(path: .v3)
@@ -76,7 +78,7 @@ final class NetworkService {
         
         bookingRequestTask = Task {
             do {
-                let booking = try await request.create(type: Booking.self)
+                let booking = try await service.create(request: builder.create(), type: Booking.self)
                 completion(.success(booking))
             } catch {
                 completion(.failure(error))
@@ -87,11 +89,9 @@ final class NetworkService {
     }
     
     func requestImage(url: URL ,completion: @escaping (Result<UIImage, Error>) -> Void) {
-        let request = QueryBuilder()
-        
         imageRequestTask = Task {
             do {
-                let image = try await request.create(from: url)
+                let image = try await service.create(from: url)
                 completion(.success(image))
             } catch {
                 completion(.failure(error))

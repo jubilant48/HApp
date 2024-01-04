@@ -68,7 +68,6 @@ struct ImageSlider: View {
                 }
             }
         }
-
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
         .overlay(
                 FiveDotsIndexView(numberOfPages: imageUrls.count,

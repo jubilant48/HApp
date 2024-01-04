@@ -44,6 +44,7 @@
 		FA85CFB82B36409400316D3F /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = FA85CFB72B36409400316D3F /* CachedAsyncImage */; };
 		FA8B88422B3080630044A2E3 /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B88412B3080630044A2E3 /* TagsView.swift */; };
 		FA8B88452B3083240044A2E3 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B88442B3083240044A2E3 /* TagView.swift */; };
+		FA8E83F72B47152E001FEC8E /* RundomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8E83F62B47152E001FEC8E /* RundomGenerator.swift */; };
 		FA9283A12B374B6100324697 /* LoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9283A02B374B6100324697 /* LoadView.swift */; };
 		FA9E3B6C2B2F27E100413917 /* HotelVControllerVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E3B6B2B2F27E100413917 /* HotelVControllerVModel.swift */; };
 		FA9E3B6E2B2F445B00413917 /* ImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E3B6D2B2F445B00413917 /* ImageSlider.swift */; };
@@ -78,6 +79,7 @@
 		FAF41F0B2B2DC727008144AE /* AcceptVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF41F0A2B2DC727008144AE /* AcceptVController.swift */; };
 		FAF41F0F2B2DCCF5008144AE /* OrderAcceptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF41F0E2B2DCCF4008144AE /* OrderAcceptView.swift */; };
 		FAF41F1A2B2DDD9C008144AE /* FontFamily.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF41F192B2DDD9C008144AE /* FontFamily.swift */; };
+		FAF77B282B47326E00A80D60 /* RequestService .swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF77B272B47326E00A80D60 /* RequestService .swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +121,7 @@
 		FA85CFB42B362D2100316D3F /* CustomSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSection.swift; sourceTree = "<group>"; };
 		FA8B88412B3080630044A2E3 /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
 		FA8B88442B3083240044A2E3 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		FA8E83F62B47152E001FEC8E /* RundomGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RundomGenerator.swift; sourceTree = "<group>"; };
 		FA9283A02B374B6100324697 /* LoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadView.swift; sourceTree = "<group>"; };
 		FA9E3B6B2B2F27E100413917 /* HotelVControllerVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelVControllerVModel.swift; sourceTree = "<group>"; };
 		FA9E3B6D2B2F445B00413917 /* ImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlider.swift; sourceTree = "<group>"; };
@@ -155,6 +158,7 @@
 		FAF41F0E2B2DCCF4008144AE /* OrderAcceptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderAcceptView.swift; sourceTree = "<group>"; };
 		FAF41F182B2DD590008144AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FAF41F192B2DDD9C008144AE /* FontFamily.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontFamily.swift; sourceTree = "<group>"; };
+		FAF77B272B47326E00A80D60 /* RequestService .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RequestService .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				FABA31DB2B2E298200A74F46 /* QueryBuilder */,
+				FAF77B262B47324B00A80D60 /* RequestService */,
 				FA505A0E2B2E2D5300C833F9 /* NetworkService */,
 			);
 			path = Networking;
@@ -361,6 +366,7 @@
 				FA9E3B762B2F67B400413917 /* GeneralConstatnt.swift */,
 				FA6F4C332B2F7D3200D3C32A /* NumericFormatter.swift */,
 				FA39558D2B35C88C00663CD1 /* Validation.swift */,
+				FA8E83F62B47152E001FEC8E /* RundomGenerator.swift */,
 				FABA31CB2B2E1F3500A74F46 /* Errors */,
 			);
 			path = Helpers;
@@ -570,6 +576,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		FAF77B262B47324B00A80D60 /* RequestService */ = {
+			isa = PBXGroup;
+			children = (
+				FAF77B272B47326E00A80D60 /* RequestService .swift */,
+			);
+			path = RequestService;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -719,6 +733,7 @@
 				FABA31CD2B2E1F4800A74F46 /* CommonError.swift in Sources */,
 				FA505A102B2E2E3400C833F9 /* NetworkService.swift in Sources */,
 				FABA31DA2B2E284500A74F46 /* JSONHelper.swift in Sources */,
+				FAF77B282B47326E00A80D60 /* RequestService .swift in Sources */,
 				FABA31D22B2E25A300A74F46 /* HotelVController.swift in Sources */,
 				FABA1F792B347FEF000AA093 /* TouristModel.swift in Sources */,
 				FAF41F1A2B2DDD9C008144AE /* FontFamily.swift in Sources */,
@@ -753,6 +768,7 @@
 				FABA31C02B2E01CE00A74F46 /* RoundedButtonStyle.swift in Sources */,
 				FA6F4C3A2B2F7DCB00D3C32A /* NumberFormatter + Extension.swift in Sources */,
 				FABA31C92B2E164400A74F46 /* QueryModel.swift in Sources */,
+				FA8E83F72B47152E001FEC8E /* RundomGenerator.swift in Sources */,
 				FA505A152B2E4AA400C833F9 /* Rooms.swift in Sources */,
 				FA6F4C342B2F7D3300D3C32A /* NumericFormatter.swift in Sources */,
 				FAF41EFC2B2DC6D8008144AE /* HotelApp.swift in Sources */,
@@ -899,7 +915,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.02;
+				MARKETING_VERSION = 1.03;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.planethost.Hotel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -930,7 +946,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.02;
+				MARKETING_VERSION = 1.03;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.planethost.Hotel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

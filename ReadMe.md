@@ -28,9 +28,24 @@
 
 ## About the project
 
-##### Video with project: https://mega.nz/file/9Q1mAZwa#s7uWQSDv_zzmGmvwQkOUReT5V_Zv_R6fSy-0JCbU3SQ
+##### This mini app Hotel, where i'm practice create app in SwiftUI. App build on MVVM  + C architecture. 
+
+#### App have: 
+
+- Network Layer
+- Validation
+- Four screen
+
+##### Video with app: https://mega.nz/file/9Q1mAZwa#s7uWQSDv_zzmGmvwQkOUReT5V_Zv_R6fSy-0JCbU3SQ
 
 ## Log - version
+
+#### 1.03
+
+- took out the request layer in RequestService
+- fix validation for email
+- fix validation for name and surname
+- add RundomGenerator and use him in AcceptVControllerVModel 
 
 #### 1.02
 

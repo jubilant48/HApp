@@ -13,6 +13,5 @@ protocol QueryBuilderProtocol {
     func add(path: QueryModel.Path) -> Self
     func add(path: String) -> Self
     
-    func create<T: Decodable>(type: T.Type) async throws -> T
-    func create(from url: URL) async throws -> UIImage
+    func create() throws -> URLRequest
 }

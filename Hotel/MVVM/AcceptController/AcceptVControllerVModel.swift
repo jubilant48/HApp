@@ -12,7 +12,7 @@ final class AcceptVControllerVModel: ObservableObject {
     // MARK: - Attributes
     
     let title = "Ваш заказ принят в работу"
-    let description = "Подтверждение заказа №104893 может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление."
+    let description = "Подтверждение заказа №\(RundomGenerator.rundomOrder()) может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление."
     
     let navigationTitle = "Заказ оплачен"
     let buttonTitle = "Супер!"

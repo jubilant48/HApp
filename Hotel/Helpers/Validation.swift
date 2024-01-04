@@ -34,11 +34,17 @@ final class Validation {
     // MARK: - Methods
     
     func isValidName(_ name: String) -> Bool {
-        name.count >= 3
+        let nameRegEx = "\\A\\w{3,12}\\z"
+        let namePred = NSPredicate(format:"SELF MATCHES %@", nameRegEx)
+        
+        return namePred.evaluate(with: name)
     }
     
     func isValidSurname(_ surname: String) -> Bool {
-        surname.count >= 3
+        let surnameRegEx = "\\A\\w{3,12}\\z"
+        let surnamePred = NSPredicate(format:"SELF MATCHES %@", surnameRegEx)
+        
+        return surnamePred.evaluate(with: surname)
     }
     
     func isValidPhoneNumber(_ number: String) -> Bool {
@@ -46,7 +52,7 @@ final class Validation {
     }
     
     func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailRegEx = "[A-Z0-9a-z._%+-]{3,}+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
 
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)

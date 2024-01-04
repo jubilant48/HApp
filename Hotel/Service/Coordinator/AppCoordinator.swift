@@ -12,7 +12,6 @@ final class AppCoordinator: ObservableObject {
     // MARK: - Attributes
     
     @Published var path = NavigationPath()
-    @Published var controller: Controller = .hotel
     
     // MARK: - Methods
     
